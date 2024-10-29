@@ -20,6 +20,20 @@
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
 //
-//
+// fillMandatoryFieldsAndSubmit
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('fillMandatoryFieldsAndSubmit', () => {
+    cy.get('#firstName').type('Natalia');
+    cy.get('#lastName').type('Matos');
+    cy.get('#email').type('natalia@example.com');
+    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.contains('button', 'Enviar').click();  // Supondo que o texto do botão seja 'Enviar'
+  });
+
+ 
+  
+  
+  
