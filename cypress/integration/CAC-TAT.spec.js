@@ -78,4 +78,25 @@ it('envia o formulário com sucesso usando um comando customizado', () => {
     cy.fillMandatoryFieldsAndSubmit();
     
   });
+  it('Seleciona o campo youtube', function() {
+    cy.get('#firstName').type('Natalia' , { delay: 10 });
+    cy.get('#lastName').type('Matos' , { delay: 10 });
+    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
+    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#product').select('youtube').should('have.value', 'youtube');
+    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('button[type="submit"]').type('button')
+
+
+ 
+});
+it.only('Seleciona o campo youtube', function() {
+    cy.get('#firstName').type('Natalia' , { delay: 10 });
+    cy.get('#lastName').type('Matos' , { delay: 10 });
+    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
+    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#product').select('blog').should('have.value', 'blog');
+    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('button[type="submit"]').type('button')
+});
 });
