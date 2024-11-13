@@ -90,7 +90,7 @@ it('envia o formulário com sucesso usando um comando customizado', () => {
 
  
 });
-it.only('Seleciona o campo youtube', function() {
+it('Seleciona o campo youtube', function() {
     cy.get('#firstName').type('Natalia' , { delay: 10 });
     cy.get('#lastName').type('Matos' , { delay: 10 });
     cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
@@ -98,5 +98,39 @@ it.only('Seleciona o campo youtube', function() {
     cy.get('#product').select('blog').should('have.value', 'blog');
     cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
     cy.get('button[type="submit"]').type('button')
+
 });
+it('Seleciona o campo youtube', function() {
+    cy.get('#firstName').type('Natalia' , { delay: 10 });
+    cy.get('#lastName').type('Matos' , { delay: 10 });
+    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
+    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#product').select('mentoria').should('have.value', 'mentoria');
+    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('button[type="submit"]').type('button')
+});
+
+it('Seleciona o check tipo radio em opcap Elogio', function() {
+
+    cy.get('#firstName').type('Natalia' , { delay: 10 });
+    cy.get('#lastName').type('Matos' , { delay: 10 });
+    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
+    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#product').select('mentoria').should('have.value', 'mentoria');
+    cy.get('input[type="radio"][value="feedback"]').check().should('be.checked');
+    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('button[type="submit"]').type('button')
+
+})
+
+it.only('Seleciona e marca cada tipo de atendimento', function() {
+    // Itera sobre todos os radio buttons e verifica cada um 
+    cy.get('input[type="radio"]')
+      .should('have.length', 3)
+      .each(function($radio)  {
+        cy.wrap($radio).check().should('be.checked');
+    })
+
+    
+})
 });
