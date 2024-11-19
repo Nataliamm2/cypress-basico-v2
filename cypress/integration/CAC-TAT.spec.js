@@ -123,7 +123,7 @@ it('Seleciona o check tipo radio em opcap Elogio', function() {
 
 })
 
-it.only('Seleciona e marca cada tipo de atendimento', function() {
+it ('Seleciona e marca cada tipo de atendimento', function() {
     // Itera sobre todos os radio buttons e verifica cada um 
     cy.get('input[type="radio"]')
       .should('have.length', 3)
@@ -132,5 +132,32 @@ it.only('Seleciona e marca cada tipo de atendimento', function() {
     })
 
     
+})
+it ('marca ambos checkboxes, depois desmarca o último', function() {
+        // Itera sobre todos os radio buttons e verifica cada um 
+        cy.get('#phone').type('11 966584555', { delay: 10 });
+        cy.get('input[type="radio"]')
+        .should('have.length', 3)
+        .each(function($radio)  {
+          cy.wrap($radio).check()
+            cy.get('#email-checkbox').check()
+            cy.get('#phone-checkbox').check()
+            cy.get('#phone-checkbox').uncheck()
+             
+    
+
+
+})
+})
+
+it ('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function() {
+    cy.get('#firstName').type('Natalia' , { delay: 10 });
+    cy.get('#lastName').type('Matos' , { delay: 10 });
+    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
+    cy.get('#product').select('mentoria').should('have.value', 'mentoria');
+    cy.get('#phone-checkbox').check()
+    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('button[type="submit"]').type('button')
+
 })
 });
