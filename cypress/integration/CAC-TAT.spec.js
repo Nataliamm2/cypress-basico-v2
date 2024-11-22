@@ -23,10 +23,10 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     });
     // Novo teste exibe mensagem de erro ao submeter o formulário com um email com formatação inválida
     it('exibe mensagem de erro ao submeter o formulário com um email inválido', function() {
-        cy.get('#firstName').type('Natalia' , { delay: 10 });
-        cy.get('#lastName').type('Matos' , { delay: 10 });
+        cy.get('#firstName').type('Natalia' , );
+        cy.get('#lastName').type('Matos' , );
         cy.get('#email').type('natalia-invalido'); // Email inválido
-        cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+        cy.get('#open-text-area').type('preciso de ajuda xxx', );
         cy.get('button[type="submit"]').type('button')
         cy.get('.error').should('be.visible');
         
@@ -34,23 +34,23 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     
     // No teste valor input telefone
    it('Valida input de valor de phone', function() {
-        cy.get('#firstName').type('Natalia' , { delay: 10 });
-        cy.get('#lastName').type('Matos' , { delay: 10 });
-        cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
-        cy.get('#phone').type('AAAA BBB', { delay: 10 });
+        cy.get('#firstName').type('Natalia' , );
+        cy.get('#lastName').type('Matos' , );
+        cy.get('#email').type('natalia@hotmail.com', );
+        cy.get('#phone').type('AAAA BBB', );
         cy.get('#phone').should('have.value', '');
-        cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+        cy.get('#open-text-area').type('preciso de ajuda xxx', );
         cy.get('button[type="submit"]').type('button')
 
     
 });
   // exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário
   it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido', function() {
-    cy.get('#firstName').type('Natalia', { delay: 10 });
-    cy.get('#lastName').type('Matos', { delay: 10 });
-    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
+    cy.get('#firstName').type('Natalia', );
+    cy.get('#lastName').type('Matos', );
+    cy.get('#email').type('natalia@hotmail.com', );
     cy.get('input[type="checkbox"]').check({ force: true }); // Força o checkbox a ser marcado
-    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('#open-text-area').type('preciso de ajuda xxx', );
     cy.get('button[type="submit"]').click();
     cy.get('.error').should('be.visible');
     
@@ -64,61 +64,57 @@ it('preenche e limpa os campos nome, sobrenome, email e telefone', function() {
 
 });
 it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function() {
-    cy.get('#firstName').type(' ' , { delay: 10 });
-    cy.get('#lastName').type(' ' , { delay: 10 });
-    cy.get('#email').type(' ', { delay: 10 });
-    cy.get('#phone').type('11 966584555', { delay: 10 });
-    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('#firstName').type(' ' , );
+    cy.get('#lastName').type(' ' , );
+    cy.get('#email').type(' ', );
+    cy.get('#phone').type('11 966584555', );
+    cy.get('#open-text-area').type('preciso de ajuda xxx', );
     cy.get('button[type="submit"]').type('button')
     cy.get('.error').should('be.visible');
 
 }); 
 
-it('envia o formulário com sucesso usando um comando customizado', () => {
-    cy.fillMandatoryFieldsAndSubmit();
-    
-  });
   it('Seleciona o campo youtube', function() {
-    cy.get('#firstName').type('Natalia' , { delay: 10 });
-    cy.get('#lastName').type('Matos' , { delay: 10 });
-    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
-    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#firstName').type('Natalia' , );
+    cy.get('#lastName').type('Matos' , );
+    cy.get('#email').type('natalia@hotmail.com',);
+    cy.get('#phone').type('11 966584555', );
     cy.get('#product').select('youtube').should('have.value', 'youtube');
-    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('#open-text-area').type('preciso de ajuda xxx',);
     cy.get('button[type="submit"]').type('button')
 
 
  
 });
-it('Seleciona o campo youtube', function() {
-    cy.get('#firstName').type('Natalia' , { delay: 10 });
-    cy.get('#lastName').type('Matos' , { delay: 10 });
-    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
-    cy.get('#phone').type('11 966584555', { delay: 10 });
+it('Seleciona o campo blog', function() {
+    cy.get('#firstName').type('Natalia' , );
+    cy.get('#lastName').type('Matos' , );
+    cy.get('#email').type('natalia@hotmail.com', );
+    cy.get('#phone').type('11 966584555', );
     cy.get('#product').select('blog').should('have.value', 'blog');
-    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('#open-text-area').type('preciso de ajuda xxx', );
     cy.get('button[type="submit"]').type('button')
 
 });
-it('Seleciona o campo youtube', function() {
-    cy.get('#firstName').type('Natalia' , { delay: 10 });
-    cy.get('#lastName').type('Matos' , { delay: 10 });
-    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
-    cy.get('#phone').type('11 966584555', { delay: 10 });
+it('Seleciona o campo mentoria', function() {
+    cy.get('#firstName').type('Natalia' , );
+    cy.get('#lastName').type('Matos' , );
+    cy.get('#email').type('natalia@hotmail.com', );
+    cy.get('#phone').type('11 966584555', );
     cy.get('#product').select('mentoria').should('have.value', 'mentoria');
-    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('#open-text-area').type('preciso de ajuda xxx', );
     cy.get('button[type="submit"]').type('button')
 });
 
 it('Seleciona o check tipo radio em opcap Elogio', function() {
 
-    cy.get('#firstName').type('Natalia' , { delay: 10 });
-    cy.get('#lastName').type('Matos' , { delay: 10 });
-    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
-    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#firstName').type('Natalia' , );
+    cy.get('#lastName').type('Matos' , );
+    cy.get('#email').type('natalia@hotmail.com', );
+    cy.get('#phone').type('11 966584555', );
     cy.get('#product').select('mentoria').should('have.value', 'mentoria');
     cy.get('input[type="radio"][value="feedback"]').check().should('be.checked');
-    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('#open-text-area').type('preciso de ajuda xxx', );
     cy.get('button[type="submit"]').type('button')
 
 })
@@ -151,23 +147,23 @@ it ('marca ambos checkboxes, depois desmarca o último feito pelo professor', fu
 })
 
 it ('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function() {
-    cy.get('#firstName').type('Natalia' , { delay: 10 });
-    cy.get('#lastName').type('Matos' , { delay: 10 });
-    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
+    cy.get('#firstName').type('Natalia' ,);
+    cy.get('#lastName').type('Matos' , );
+    cy.get('#email').type('natalia@hotmail.com', );
     cy.get('#product').select('mentoria').should('have.value', 'mentoria');
     cy.get('#phone-checkbox').check()
-    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('#open-text-area').type('preciso de ajuda xxx', );
     cy.get('button[type="submit"]').type('button')
 
 })
 it ('seleciona um arquivo da pasta fixtures', function() {
-    cy.get('#firstName').type('Natalia' , { delay: 10 });
-    cy.get('#lastName').type('Matos' , { delay: 10 });
-    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
-    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#firstName').type('Natalia' , );
+    cy.get('#lastName').type('Matos' , );
+    cy.get('#email').type('natalia@hotmail.com',);
+    cy.get('#phone').type('11 966584555', );
     cy.get('#product').select('mentoria').should('have.value', 'mentoria');
     cy.get('#phone-checkbox').check()
-    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('#open-text-area').type('preciso de ajuda xxx', );
     cy.get('input[type=file]')
     .selectFile('cypress/fixtures/example.json')
     .then(input => {
@@ -177,13 +173,13 @@ it ('seleciona um arquivo da pasta fixtures', function() {
 
 })
 it ('seleciona um arquivo simulando um drag-and-drop', function() {
-    cy.get('#firstName').type('Natalia' , { delay: 10 });
-    cy.get('#lastName').type('Matos' , { delay: 10 });
-    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
-    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#firstName').type('Natalia' , );
+    cy.get('#lastName').type('Matos' , );
+    cy.get('#email').type('natalia@hotmail.com', );
+    cy.get('#phone').type('11 966584555', );
     cy.get('#product').select('mentoria').should('have.value', 'mentoria');
     cy.get('#phone-checkbox').check()
-    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('#open-text-area').type('preciso de ajuda xxx', );
     cy.get('input[type=file]')
     .selectFile('cypress/fixtures/example.json', { action: 'drag-drop'})
     .then(input => {
