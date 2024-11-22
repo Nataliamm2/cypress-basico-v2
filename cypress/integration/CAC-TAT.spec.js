@@ -176,7 +176,7 @@ it ('seleciona um arquivo da pasta fixtures', function() {
     cy.get('button[type="submit"]').type('button')
 
 })
-it.only ('seleciona um arquivo simulando um drag-and-drop', function() {
+it ('seleciona um arquivo simulando um drag-and-drop', function() {
     cy.get('#firstName').type('Natalia' , { delay: 10 });
     cy.get('#lastName').type('Matos' , { delay: 10 });
     cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
