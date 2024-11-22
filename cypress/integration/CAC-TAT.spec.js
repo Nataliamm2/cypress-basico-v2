@@ -133,13 +133,8 @@ it ('Seleciona e marca cada tipo de atendimento', function() {
 
     
 })
-it ('marca ambos checkboxes, depois desmarca o último', function() {
+it ('marca ambos checkboxes, depois desmarca o último feito por mim', function() {
         // Itera sobre todos os radio buttons e verifica cada um 
-        cy.get('#phone').type('11 966584555', { delay: 10 });
-        cy.get('input[type="radio"]')
-        .should('have.length', 3)
-        .each(function($radio)  {
-          cy.wrap($radio).check()
             cy.get('#email-checkbox').check()
             cy.get('#phone-checkbox').check()
             cy.get('#phone-checkbox').uncheck()
@@ -148,6 +143,11 @@ it ('marca ambos checkboxes, depois desmarca o último', function() {
 
 
 })
+
+it ('marca ambos checkboxes, depois desmarca o último feito pelo professor', function() {
+    cy.get('input[type="checkbox"]').check().should('be.checked')
+    .last().uncheck().should('not.be.checked')
+
 })
 
 it ('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function() {
@@ -158,6 +158,39 @@ it ('exibe mensagem de erro quando o telefone se torna obrigatório mas não é 
     cy.get('#phone-checkbox').check()
     cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
     cy.get('button[type="submit"]').type('button')
+
+})
+it ('seleciona um arquivo da pasta fixtures', function() {
+    cy.get('#firstName').type('Natalia' , { delay: 10 });
+    cy.get('#lastName').type('Matos' , { delay: 10 });
+    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
+    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#product').select('mentoria').should('have.value', 'mentoria');
+    cy.get('#phone-checkbox').check()
+    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('input[type=file]')
+    .selectFile('cypress/fixtures/example.json')
+    .then(input => {
+        expect('example.json')
+    })
+    cy.get('button[type="submit"]').type('button')
+
+})
+it.only ('seleciona um arquivo simulando um drag-and-drop', function() {
+    cy.get('#firstName').type('Natalia' , { delay: 10 });
+    cy.get('#lastName').type('Matos' , { delay: 10 });
+    cy.get('#email').type('natalia@hotmail.com', { delay: 10 });
+    cy.get('#phone').type('11 966584555', { delay: 10 });
+    cy.get('#product').select('mentoria').should('have.value', 'mentoria');
+    cy.get('#phone-checkbox').check()
+    cy.get('#open-text-area').type('preciso de ajuda xxx', { delay: 10 });
+    cy.get('input[type=file]')
+    .selectFile('cypress/fixtures/example.json', { action: 'drag-drop'})
+    .then(input => {
+        expect(input[0].files[0].name).to.equal('example.json')
+    })
+    cy.get('button[type="submit"]').type('button')
+
 
 })
 });
