@@ -189,4 +189,29 @@ it ('seleciona um arquivo simulando um drag-and-drop', function() {
 
 
 })
+it('verifica potilica de privacidade', function() {
+    cy.get('#privacy a').should('have.attr', 'target', '_blank')
+    
+});
+
+it('acessa a página da política de privacidade removendo o target e então clicando no link', function() {
+    cy.get('#privacy a').invoke('removeAttr', 'target').click();
+    
+    
+});
+  it('Consultando texto de titulo no politica de privacidade', function() {
+    cy.get('#privacy a').invoke('removeAttr', 'target').click
+    ();
+    
+    // Verifica se o título da página de privacidade contém 'Política de Privacidade'
+    cy.get('#title').should('contain.text', 'CAC TAT - Política de privacidade');
+});
+
+it('Consultando texto Talking About Testing', function() {
+    cy.get('#privacy a').invoke('removeAttr', 'target').click
+    ();
+    
+    // Verifica se o textoda página de privacidade contém 'Talking About Testing'
+    cy.contains('Talking About Testing').should('be.visible')
+})
 });
