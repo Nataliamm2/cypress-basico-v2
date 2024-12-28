@@ -215,3 +215,4 @@ it('Consultando texto Talking About Testing', function() {
     cy.contains('Talking About Testing').should('be.visible')
 })
 });
+
